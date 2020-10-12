@@ -4,14 +4,16 @@ addpath(genpath('~/chris-lab/code_general/'))
 
 %% generate some figures for signal detection theory lecture
 
-% distributions
+% parameters
 m1 = 0;
 m2 = 1;
-s1 = .3;
-s2 = s1;
+s = .3;
 x = [-2:.01:3];
-pd1 = normpdf(x,m1,s1); npd1 = pd1 / sum(pd1);
-pd2 = normpdf(x,m2,s2); npd2 = pd2 / sum(pd2);
+
+% plot signal and noise distributions
+plotCritCDF(x,m1,m2,s)
+text(m1,max(ylim)*.95,'Noise','HorizontalAlignment','center')
+text(m2,max(ylim)*.95,'Signal','HorizontalAlignment','center')
 
 % plot distributions
 clf; hold on
