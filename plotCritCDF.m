@@ -1,10 +1,14 @@
-function plotCritCDF(x,m1,m2,s,criterion,type,color)
+function plotCritCDF(x,m1,m2,s,criterion,type,color,lw)
 
 if ~exist('type','var')
     type = [];
 end
 
-if ~exist('color','var')
+if ~exist('lw','var')
+    lw = 1;
+end
+
+if ~exist('color','var') | isempty(color)
     color = 'k';
 end
 
@@ -64,9 +68,9 @@ for i = 1:length(type)
 end
 
 % plot the density functions on top and the criterion
-plot(x,npd1,'Color',[.5 .5 .5],'LineWidth',1);
-plot(x,npd2,'Color',color,'LineWidth',1);
+plot(x,npd1,'Color',[.5 .5 .5],'LineWidth',lw);
+plot(x,npd2,'Color',color,'LineWidth',lw);
 if exist('criterion','var') & ~isempty(criterion)
-    plot([criterion criterion],ylim,'k--','LineWidth',1);
+    plot([criterion criterion],ylim,'k--','LineWidth',lw);
 end
 
